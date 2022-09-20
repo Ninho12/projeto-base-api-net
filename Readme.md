@@ -114,6 +114,9 @@ No Terminal:
 	}
 
 
+## Trabalhando com o CRUD
+
+
 11 Passo: Criar o o metodo para inserir dados
 	
 	[HttpPost]
@@ -183,6 +186,9 @@ No Terminal:
 		return Ok(pessoas);
 
 	} 
+
+
+## Graças a Deus!
 
 Pronto já fizemos todos os metodos ou endpoints para um CRUD completo.
 Agora é só testar e ver se estar tudo certo.
