@@ -76,7 +76,7 @@ No Terminal:
 7 Passo: Abrir a classe Program.cs para adicionar os comandos
 
 	começando com um Import
-		using ModuloAPI.Context;
+		using projeto_base_api_net.Context;
 		using Microsoft.EntityFrameworkCore;
 
 	no começo dos seu codigo:
