@@ -32,10 +32,28 @@ namespace projeto_base_api_net.Controllers
 	    public IActionResult ObterporId(int id){
 
             var pessoa = _context.Pessoas.Find(id);
+
             if(pessoa == null)
                 return NotFound();
 
             return Ok(pessoa);
+	    } 
+
+         [HttpGet("ObterPorNome")]
+        public IActionResult ObterPorNome(string nome){
+            
+            var pessoas = _context.Pessoas.Where(x => x.nome.Contains(nome));
+            return Ok(pessoas);
+
+        } 
+
+
+        [HttpGet("ObterTodos")]
+	    public IActionResult ObterTodos(){
+
+            var pessoas = _context.Pessoas.Where(x => x.id >= 0 );
+            return Ok(pessoas);
+
 	    } 
 
         [HttpPut("{id}")]
@@ -70,13 +88,6 @@ namespace projeto_base_api_net.Controllers
 
 	    }
 
-        [HttpGet("ObterPorNome")]
-        public IActionResult ObterPorNome(string nome){
-            
-            var pessoas = _context.Pessoas.Where(x => x.nome.Contains(nome));
-            return Ok(pessoas);
-
-        } 
-
+       
     }
 }
