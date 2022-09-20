@@ -69,8 +69,8 @@ No Terminal:
 	2. appsettings.Development.json
 		Adiciona no segundo arquivo essas linhas:
 			"ConnectionString":{ 
-				"ConexaoPadrao": "Server=localhost\\sqlexpress; Initial Catolog=Humanos; Integrated Security=True"
-				// Humanos é o nome do banco, posso escrever qualquer nome depentendo da aplicação.
+				"ConexaoPadrao": "Server=localhost\\sqlexpress; Database=mundo; Integrated Security=True"
+				// mundo é o nome do banco, posso escrever qualquer nome depentendo da aplicação.
 			 }
 
 7 Passo: Abrir a classe Program.cs para adicionar os comandos
@@ -103,7 +103,7 @@ No Terminal:
 10 Passo: Criar o Controller: PessoaController
 
 	[ApiController]
-	[Router("[controller]")]
+	[Route("[controller]")]
 	public class PessoaController : ControllerBase
 	{
 		private readonly PessoaContext _context;
