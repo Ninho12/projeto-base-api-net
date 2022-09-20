@@ -56,8 +56,8 @@ No Terminal:
 		// PessoasContext é nome da classe que conecta com o banco de dados, você pode mudar
 		//	de acordo com a sua aplicação.
 
-		public Dbset<Pessoa> Pessoas { get; set; }
-		// Dbset é para o EntityFramework transformar a classe que estar dentro
+		public DbSet<Pessoa> Pessoas { get; set; }
+		// DbSet é para o EntityFramework transformar a classe que estar dentro
 		// <> em uma tabela do banco de dados; Pessoa é a classe e Pessoas é a tabela.
 	}
 	
