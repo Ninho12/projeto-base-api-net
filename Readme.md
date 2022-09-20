@@ -99,4 +99,94 @@ No Terminal:
 	
 	Com esse comando criamos uma ou varias tabelas no banco de dados.
 
-10 Passo: 
+
+10 Passo: Criar o Controller: PessoaController
+
+	[ApiController]
+	[Router("[controller]")]
+	public class PessoaController : ControllerBase
+	{
+		private readonly PessoaContext _context;
+
+		public PessoaController(PessoaContext context){
+			_context = context;
+		}
+	}
+
+
+11 Passo: Criar o o metodo para inserir dados
+	
+	[HttpPost]
+	public IActionResult Create(Pessoa pessoa){
+		
+		_context.Add(pessoa);	
+		_context.SaveChanges();
+		return Ok(pessoa);	
+
+	}
+
+12 Passo: Criar um metodo de busca pelo id
+
+	[HttpGet("{id}")]
+	public IActionResult ObterporId(int id){
+
+		var pessoa = _context.Pessoas.Find(id);
+		if(pessoa == null)
+			return NotFound();
+
+		return Ok(pessoa);
+	} 
+
+
+13 Passo: Criar metodo Atualizar ou Update:
+	
+	[HttpPut("{id}")]
+	public IActionResult AtualizarPessoa(int id, Pessoa pessoa){
+		
+		var pessoaBanco = _context.Pessoas.Find(id);
+		if(pessoaBanco == null)
+			return NotFound();
+
+		pessoaBanco.Nome = pessoa.Nome;
+		pessoaBanco.email = pessoa.email;
+		pessoaBanco.senha = pessoa.senha;
+
+		_context.Pessoas.Update(pessoaBanco);
+		_context.SaveChanges();
+
+		return Ok(pessoaBanco);
+		
+	}
+
+14 Passo: Criar metodo de deletar
+
+	[HttpDelete("{id}")]
+	public IActionResult Deletar(int id){
+		
+		var pessoaBanco = _context.Pessoas.Find(id);
+		if(pessoaBanco == null)
+			return NotFound();
+
+		_context.Pessoas.Remove(pessoaBanco);
+		_context.SaveChanges();		
+
+		return NoContent();		
+
+	}
+
+15 Passo: Criar um metodo para buscar por nome
+
+	[HttpGet("ObterPorNome")]
+	public IActionResult ObterPorNome(string nome){
+		
+		var pessoas = _context.Pessoas.Where(x => x.Nome.Contains(nome));
+		return Ok(pessoas);
+
+	} 
+
+Pronto já fizemos todos os metodos ou endpoints para um CRUD completo.
+Agora é só testar e ver se estar tudo certo.
+Deu muito Trabalho mas concerteza vale apena.
+
+
+# Salve Maria Santissima!!!
